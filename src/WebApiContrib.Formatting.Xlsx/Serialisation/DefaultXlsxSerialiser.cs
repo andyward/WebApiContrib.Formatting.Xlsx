@@ -59,7 +59,7 @@ namespace WebApiContrib.Formatting.Xlsx.Serialisation
                         row.Add(FormatCellValue(cellValue, info));
                     }
 
-                    document.AppendRow(row.ToArray());
+                    document.AppendRow(row.ToList());
                 }
             }
 

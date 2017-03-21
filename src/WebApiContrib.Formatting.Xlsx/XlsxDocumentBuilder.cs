@@ -46,12 +46,11 @@ namespace WebApiContrib.Formatting.Xlsx
         public void AppendRow(IEnumerable<object> row)
         {
             RowCount++;
-
-            var enumerable = row as IList<object> ?? row.ToList();
-            for (var i = 1; i <= enumerable.Count(); i++)
+            
+            int i = 0;
+            foreach (var col in row)
             {
-                // Unary-based indexes should not mix with zero-based. :(
-                Worksheet.Cells[RowCount, i].Value = enumerable.ElementAt(i - 1);
+                Worksheet.Cells[RowCount, ++i].Value = col;
             }
         }
 
